@@ -1,0 +1,5 @@
+= solution-backup
+
+solution-backup is a Commodore component to manage solution-backup.
+
+See the xref:references/parameters.adoc[parameters] reference for further details.
