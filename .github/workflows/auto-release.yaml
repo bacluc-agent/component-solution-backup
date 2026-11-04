@@ -1,11 +1,19 @@
 name: Autorelease
+# Not pull_request: that gives fork PRs a read-only GITHUB_TOKEN, and this job
+# writes through the API. This job never checks out or runs code from the PR,
+# only reads its metadata from the event payload.
 on:
-  pull_request:
+  pull_request_target:
     types:
       - synchronize
       - labeled
       - unlabeled
       - closed
+
+permissions:
+  contents: write
+  pull-requests: write # PR comments are checked against this, not issues
+  actions: write
 
 jobs:
   create-release-tag:
