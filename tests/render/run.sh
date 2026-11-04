@@ -10,7 +10,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-MANIFEST="$ROOT/compiled/defaults/solution-backup/managedResource.yaml"
+MANIFEST="$ROOT/compiled/defaults/defaults/managedResource.yaml"
 INPUTS="$ROOT/tests/render/inputs"
 EXPECTED="$ROOT/tests/render/expected"
 
