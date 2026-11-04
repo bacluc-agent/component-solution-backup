@@ -1,11 +1,19 @@
 name: Autorelease
+# pull_request_target (and not pull_request) because this job writes through the
+# GitHub API, and GITHUB_TOKEN is read-only for pull_request runs from forks.
+# This job never checks out or runs code from the PR, only its metadata.
 on:
-  pull_request:
+  pull_request_target:
     types:
       - synchronize
       - labeled
       - unlabeled
       - closed
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
 
 jobs:
   create-release-tag:
