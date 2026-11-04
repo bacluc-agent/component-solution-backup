@@ -5,6 +5,13 @@ on:
       - v*
   workflow_dispatch:
 
+# Explicit instead of relying on the repository's default workflow permissions:
+# a restricted default makes "Create Release" fail with
+# "403 Resource not accessible by integration".
+permissions:
+  contents: write
+  pull-requests: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
