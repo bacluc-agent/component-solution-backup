@@ -1,7 +1,7 @@
 name: Autorelease
-# pull_request_target (and not pull_request) because this job writes through the
-# GitHub API, and GITHUB_TOKEN is read-only for pull_request runs from forks.
-# This job never checks out or runs code from the PR, only its metadata.
+# Not pull_request: that gives fork PRs a read-only GITHUB_TOKEN, and this job
+# writes through the API. This job never checks out or runs code from the PR,
+# only reads its metadata from the event payload.
 on:
   pull_request_target:
     types:
@@ -12,7 +12,7 @@ on:
 
 permissions:
   contents: write
-  issues: write
+  pull-requests: write # PR comments are checked against this, not issues
   actions: write
 
 jobs:
