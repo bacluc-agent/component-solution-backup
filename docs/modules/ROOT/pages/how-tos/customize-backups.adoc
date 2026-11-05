@@ -2,7 +2,7 @@
 
 Override the parameters of the `solution_backup` component to adjust schedules, retention, and storage settings. This page shows common overrides; see xref:references/parameters.adoc[Parameters] for the full reference.
 
-All examples are inventory fragments: they live under `parameters:` with the parent key `solution_backup`, in a Commodore hierarchy hierarchy file (`hierarchy.yml` entries or a class).
+All examples are inventory fragments: they live under `parameters:` with the parent key `solution_backup`, in a Commodore hierarchy file (`hierarchy.yml` entries or a class).
 
 == Adjust schedules and retention
 

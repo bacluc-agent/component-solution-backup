@@ -36,7 +36,7 @@ All three conditions must hold. A namespace carrying only the opt-in label is si
 |`pvc-backup-<instanceSlug>` in the target namespace
 
 |ClusterRole and ClusterRoleBinding
-|`<namespace>:solution-backup-manager` (namespaced, per instance)
+|`<namespace>:solution-backup-manager` (cluster-scoped, name namespaced per instance to avoid cross-instance collisions)
 
 |S3 bucket
 |`<name_prefix><instanceSlug>-<namespaceSlug>`
