@@ -60,6 +60,8 @@ kubectl label namespace test-app \
   vshn.ch/solution-base-backup-encryption-secret-
 ----
 
-Alternatively, deleting the namespace also stops the backups. On the next reconciliation, the generated ObjectBucket and Schedule for that namespace are removed.
+Alternatively, deleting the namespace also stops the backups.
+
+As explained in xref:explanations/how-it-works.adoc[How it works], removing the labels stops rendering but does not delete the previously created ObjectBucket or Schedule: delete them manually, or let Kubernetes garbage-collect them with the namespace.
 
 Note that removing a single one of the two labels is sufficient — the generated pair (ObjectBucket and Schedule) is managed as one.

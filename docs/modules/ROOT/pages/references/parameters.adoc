@@ -2,6 +2,8 @@
 
 The parent key for all of the following parameters is `solution_backup`.
 
+The defaults shown below are set in `class/defaults.yml` (its `=_metadata` block is Commodore metadata, not a parameter). The per-instance compile and output layout is defined in `class/solution-backup.yml`.
+
 == `namespace`
 
 [horizontal]
@@ -21,7 +23,7 @@ If `true`, the component creates the `namespace` (with `namespaceAnnotations` an
 == `namespaceAnnotations`
 
 [horizontal]
-type:: map
+type:: dict
 default:: `{}`
 
 Annotations added to the created `namespace`.
@@ -29,7 +31,7 @@ Annotations added to the created `namespace`.
 == `namespaceLabels`
 
 [horizontal]
-type:: map
+type:: dict
 default:: `{}`
 
 Labels added to the created `namespace`.
@@ -72,7 +74,7 @@ S3-compatible endpoint for the backup bucket. The `%(region)s` placeholder is su
 type:: string
 default:: `rma`
 
-Region substituted into the `s3.endpoint` placeholder. With the defaults this resolves to `https://objects.rma.cloudscale.ch`.
+Region substituted into the `s3.endpoint` placeholder. With the defaults this resolves to `https://objects.rma.cloudscale.ch`. It is also set as the region on each generated AppCat ObjectBucket (`spec.parameters.region`).
 
 == `objectbucket.name_prefix`
 
@@ -80,7 +82,7 @@ Region substituted into the `s3.endpoint` placeholder. With the defaults this re
 type:: string
 default:: `pvc-backup-`
 
-Prefix for the generated S3 bucket names.
+Prefix for the name of the generated S3 bucket. Only the S3 bucket name follows this setting; resource names (ManagedResource, ObjectBucket, Schedule, credentials Secret) keep the fixed `pvc-backup-` prefix with the instance slug.
 
 == `schedule.backup`
 
@@ -129,6 +131,8 @@ type:: integer
 default:: 1
 
 Number of monthly snapshots to keep.
+
+The whole `schedule.retention` map is passed through verbatim into the k8up Schedule's `spec.prune.retention`, so any other retention key supported by k8up (e.g. `keepLast`) can be added as well.
 
 == Example
 

@@ -6,7 +6,7 @@ All examples are inventory fragments: they live under `parameters:` with the par
 
 == Adjust schedules and retention
 
-[k8up Schedule] structure of the generated Schedule:
+Structure of the generated `k8up Schedule`:
 
 [source,yaml]
 ----
@@ -49,9 +49,7 @@ parameters:
 
 == Namespace management
 
-By default the component creates and labels its own namespace. Adjust it like this:
-
-By default the component creates its own namespace and labels it. Disable namespace creation or add labels and annotations:
+By default the component creates and labels its own namespace. Disable namespace creation or add labels and annotations:
 
 [source,yaml]
 ----

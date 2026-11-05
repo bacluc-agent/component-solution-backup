@@ -21,7 +21,7 @@ See xref:explanations/how-it-works.adoc[How it works] for the generated resource
 
 * The cluster provides the AppCat `ObjectBucket` CRD (`appcat.vshn.io/v1`) and can provision S3-compatible storage.
 * k8up and espejote are installed in the cluster.
-* The S3 endpoint (by default `https://objects.<region>.cloudscale.ch`) is reachable from the cluster.
+* The S3 endpoint (by default `https://objects.rma.cloudscale.ch`) is reachable from the cluster.
 * A Secret holding the restic repository password under the key `password` exists in each backed-up namespace, referenced by label.
 
 == Usage
